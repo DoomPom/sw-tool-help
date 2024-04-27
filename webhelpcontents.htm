@@ -1,0 +1,300 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<title>Sw工具</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css"> 
+<!-- 
+.selected {font-weight: normal;background-color: #E2E2E2;padding:0px,2px,0px,2px;}
+.unselected { font-weight: normal;padding:0px,2px,0px,2px;}
+.hand { cursor: hand; }
+.p {height: 16px;width: 16px;vertical-align: middle;border: 0;}
+div,body { font-family: Tahoma, Verdana; font-size: 11px; }
+A:link {text-decoration: none; color:#000000}
+A:visited {text-decoration: none; color: #000000}
+A:active {text-decoration: none; color: #000000 }
+A:hover {text-decoration: none; color: #FF0000 }
+
+-->
+</style>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var cl,pn,pm,bl;
+var path = 'icons/';
+var pos = 0;
+var icon;
+var tar = 'content';
+var display;
+var imgi;
+var AutoCollapse;
+var LastSelected = -1;
+var loaded = false;
+var max;
+var divlist;
+
+function SetEnv(v,a){
+
+if(v==0){ 
+	pn = [['daplus.gif','daminus.gif'],['tplus.gif','tminus.gif'],['uaplus.gif','uaminus.gif'],['splus.gif','sminus.gif']];
+	PreloadImg('downangle.gif','tshaped.gif','upangle.gif','sline.gif','daplus.gif','daminus.gif','tplus.gif','tminus.gif','uaplus.gif','uaminus.gif','splus.gif','sminus.gif','blank.gif','line.gif');
+}else{
+	pn = [['plus.gif','minus.gif']];
+	PreloadImg('plus.gif','minus.gif','blank.gif');
+
+}
+AutoCollapse = a;
+}
+
+ function PreloadImg(){
+if (document.images) { 
+	var imgs = PreloadImg.arguments; 
+	var pload = new Array();
+	for (var i=0; i<imgs.length; i++) { 
+		pload[i] = new Image; 
+		pload[i].src = path + imgs[i]; 
+	} 
+} 
+ } 
+
+function get(o){
+var x;
+if(document.all) x=document.all[o]; 
+if(document.getElementById) x=document.getElementById(o);
+
+return x;
+}
+
+
+function pnImg(img){
+var i,j;
+for(i=0;i<=3;i++){
+	for(j=0;j<=1;j++){
+	if(img.substr(img.lastIndexOf('/') + 1)== pn[i][j]){
+		return i;
+	}
+	}
+}
+}
+function icon(img){
+var f;
+f = img.substr(img.lastIndexOf('/') + 1);
+if( f=='1.gif' || f=='2.gif'){
+	return ['1.gif','2.gif'];
+}
+if( f=='3.gif' || f=='4.gif'){
+	return ['3.gif','4.gif'];
+}
+if( f=='5.gif' || f=='6.gif'){
+	return ['5.gif','6.gif'];
+}
+if( f=='7.gif' || f=='8.gif'){
+	return ['7.gif','8.gif'];
+}
+return [f,f];
+}
+
+function show(id){
+get('d' + id).style.display='block';
+if(get('imgn' + id )) get('imgn' + id ).src= path + pn[pnImg(get('imgn' + id ).src)][1];
+get('img' + id ).src= path + icon(get('img' + id ).src)[1];
+
+}
+
+function collapse(id){
+get('d' + id ).style.display='none';
+if(get('imgn' + id )) get('imgn' + id ).src= path + pn[pnImg(get('imgn' + id ).src)][0];
+get('img' + id ).src= path + icon(get('img' + id ).src)[0];
+
+}
+
+function collapseAll(){
+var i;
+var o;
+for(i=0;i<=divlist.length-1;i++){
+	if(o=get('d' + divlist[i])){
+		if(o.style.display!='none'){ 
+			collapse(divlist[i]);
+		}
+	}
+}
+}
+
+function showAll(){
+var i;
+var o;
+for(i=0;i<=divlist.length-1;i++){
+	if(o=get('d' + divlist[i])){
+		if(o.style.display!='block'){ 
+			show(divlist[i]);
+		}
+	}
+}
+}
+
+function unselectAll(){
+var i=0;
+while(get("l" + i)){
+	get("l" + i).className = "unselected";
+	i++;
+}
+}
+
+function clickNode(index){
+var e;
+
+e = get("l" + index);
+if(e==null) return;
+e = e.parentNode;
+if(e.nodeName == 'A'){
+	if(e.href!= window.location.href + '#'){
+		parent.parent.content.location.href = e.href;
+	}else{
+		selectNode(index);
+	}
+	e.onclick;
+}
+}
+
+function showParent(ele){
+var e;
+e = ele.parentNode;
+
+if(e==null) return;
+
+if(e.nodeName == 'DIV'){
+	if(e.id!='') show(e.id.substring(1,e.id.length ));
+}else if(e.nodeName == 'A'){
+
+}
+showParent(e);
+}
+
+function showNode(index){
+showParent(get("l" + index));
+LinkClick(index);
+}
+
+function selectNode(index){
+if(LastSelected!=index){
+//collapseAll();
+showParent(get("l" + index));
+LinkClick(index);
+get('l' + index).scrollIntoView(true);
+
+
+//alert(get('l' + index).offsetHeight + '|' + document.body.clientHeight + '|' + document.body.offsetHeight);
+window.scrollTo(0,document.body.scrollTop); // - document.body.clientHeight /3);
+}
+}
+
+
+function NodeClick(id){
+if(get('d' + id ).style.display=='none'){
+	show(id);
+}else{
+	collapse(id);
+}
+return false;
+}
+
+function LinkDblClick(id){
+if(!AutoCollapse){
+	if(get('d' + id ).style.display=='none'){
+		show(id);
+	}else{
+		collapse(id);
+	}
+}
+return false;
+}
+
+function LinkClick(index,hasChild,r){
+if(AutoCollapse && hasChild){
+	if(get('d' + index ).style.display=='none'){
+		collapseAll()
+		showParent(get('l' + index));
+		show(index);
+	}else{
+		collapseAll()
+		showParent(get('l' + index));	
+		collapse(index);
+	}
+}
+if(LastSelected!=-1){
+	get('l' + LastSelected).className = "unselected";
+}
+get('l' + index).className = "selected";
+LastSelected = index;
+return r;
+}
+
+function body_onmousemove(event){
+if(typeof(document.body.scrollTop)!='undefined'){
+if(parseInt(event.clientX)<5){
+window.scroll(0,document.body.scrollTop);}}
+if(typeof(window.scrollY)!='undefined'){
+if(parseInt(event.clientX)<5){
+window.scrollTo(0,window.scrollY);}}
+}
+
+window.defaultStatus = '';
+
+function body_onload(){
+get('loading').style.display='none';
+loaded = true;
+if(parent.parent.content.document.readyState){
+	if(parent.parent.content.document.readyState == 'complete'){
+		try{parent.parent.content.syn();}catch(e){};
+	}
+}else{
+	if(parent.parent.contentLoaded){
+		try{parent.parent.content.syn();}catch(e){};
+	}
+}
+}
+
+//-->
+</SCRIPT>
+<script language="JavaScript" src="languages.js"></script>
+
+</head>
+
+<body bgcolor="#ffffff" leftmargin="5" topmargin="5" marginwidth="5" marginheight="5" onmousemove="body_onmousemove(event);" onload="body_onload();">
+<div id="loading"><font color="#FF0000" size="1"> Loading table of contents... 
+</font><br><br></div>
+<script>SetEnv(0,true)</script><div><nobr><img src="icons/downangle.gif" class="p"><a href="topics/template/简介.htm" onclick="return LinkClick('0',false,true)" target="content" title="简介" onmousemove="window.status='简介'"><img src="icons/11.gif" class="p"> <span id="l0" class="unselected">简介</span></a></nobr></div>
+<div><nobr><img src="icons/tshaped.gif" class="p"><a href="topics/快速上手.htm" onclick="return LinkClick('1',false,true)" target="content" title="快速上手" onmousemove="window.status='快速上手'"><img src="icons/11.gif" class="p"> <span id="l1" class="unselected">快速上手</span></a></nobr></div>
+<div><nobr><a href="#" onClick="return NodeClick('2')"><img id="imgn2" src="icons/tplus.gif" class="p"></a><a href="#" onclick="return LinkClick('2',true,false)" onDblClick="return LinkDblClick('2')" target="content" title="选取文档" onmousemove="window.status='选取文档'"><img id="img2" src="icons/1.gif" class="p"> <span id="l2" class="unselected">选取文档</span></a></nobr></div>
+<div id="d2" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/$$unsavedpage1.htm" onclick="return LinkClick('3',false,true)" target="content" title="选取文件" onmousemove="window.status='选取文件'"><img src="icons/11.gif" class="p"> <span id="l3" class="unselected">选取文件</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/$$unsavedpage2.htm" onclick="return LinkClick('4',false,true)" target="content" title="选取目录" onmousemove="window.status='选取目录'"><img src="icons/11.gif" class="p"> <span id="l4" class="unselected">选取目录</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/$$unsavedpage3.htm" onclick="return LinkClick('5',false,true)" target="content" title="带依赖选择" onmousemove="window.status='带依赖选择'"><img src="icons/11.gif" class="p"> <span id="l5" class="unselected">带依赖选择</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="topics/$$unsavedpage4.htm" onclick="return LinkClick('6',false,true)" target="content" title="嵌套模式" onmousemove="window.status='嵌套模式'"><img src="icons/11.gif" class="p"> <span id="l6" class="unselected">嵌套模式</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('7')"><img id="imgn7" src="icons/tplus.gif" class="p"></a><a href="#" onclick="return LinkClick('7',true,false)" onDblClick="return LinkDblClick('7')" target="content" title="模型" onmousemove="window.status='模型'"><img id="img7" src="icons/1.gif" class="p"> <span id="l7" class="unselected">模型</span></a></nobr></div>
+<div id="d7" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/SW选项.htm" onclick="return LinkClick('8',false,true)" target="content" title="SW选项" onmousemove="window.status='SW选项'"><img src="icons/11.gif" class="p"> <span id="l8" class="unselected">SW选项</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/$$unsavedpage5.htm" onclick="return LinkClick('9',false,true)" target="content" title="模型操作" onmousemove="window.status='模型操作'"><img src="icons/11.gif" class="p"> <span id="l9" class="unselected">模型操作</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="topics/$$unsavedpage6.htm" onclick="return LinkClick('10',false,true)" target="content" title="格式转换" onmousemove="window.status='格式转换'"><img src="icons/11.gif" class="p"> <span id="l10" class="unselected">格式转换</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('11')"><img id="imgn11" src="icons/tplus.gif" class="p"></a><a href="#" onclick="return LinkClick('11',true,false)" onDblClick="return LinkDblClick('11')" target="content" title="重命名" onmousemove="window.status='重命名'"><img id="img11" src="icons/1.gif" class="p"> <span id="l11" class="unselected">重命名</span></a></nobr></div>
+<div id="d11" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/$$unsavedpage7.htm" onclick="return LinkClick('12',false,true)" target="content" title="前缀后缀" onmousemove="window.status='前缀后缀'"><img src="icons/11.gif" class="p"> <span id="l12" class="unselected">前缀后缀</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/$$unsavedpage8.htm" onclick="return LinkClick('13',false,true)" target="content" title="保存路径" onmousemove="window.status='保存路径'"><img src="icons/11.gif" class="p"> <span id="l13" class="unselected">保存路径</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="topics/$$unsavedpage9.htm" onclick="return LinkClick('14',false,true)" target="content" title="重命名" onmousemove="window.status='重命名'"><img src="icons/11.gif" class="p"> <span id="l14" class="unselected">重命名</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('15')"><img id="imgn15" src="icons/tplus.gif" class="p"></a><a href="#" onclick="return LinkClick('15',true,false)" onDblClick="return LinkDblClick('15')" target="content" title="属性" onmousemove="window.status='属性'"><img id="img15" src="icons/1.gif" class="p"> <span id="l15" class="unselected">属性</span></a></nobr></div>
+<div id="d15" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/属性字段.htm" onclick="return LinkClick('16',false,true)" target="content" title="  属性字段" onmousemove="window.status='  属性字段'"><img src="icons/11.gif" class="p"> <span id="l16" class="unselected">  属性字段</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/新建项目.htm" onclick="return LinkClick('17',false,true)" target="content" title="属性操作" onmousemove="window.status='属性操作'"><img src="icons/11.gif" class="p"> <span id="l17" class="unselected">属性操作</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="topics/公式.htm" onclick="return LinkClick('18',false,true)" target="content" title="公式" onmousemove="window.status='公式'"><img src="icons/11.gif" class="p"> <span id="l18" class="unselected">公式</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('19')"><img id="imgn19" src="icons/tplus.gif" class="p"></a><a href="#" onclick="return LinkClick('19',true,false)" onDblClick="return LinkDblClick('19')" target="content" title="配置" onmousemove="window.status='配置'"><img id="img19" src="icons/1.gif" class="p"> <span id="l19" class="unselected">配置</span></a></nobr></div>
+<div id="d19" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="topics/配置操作.htm" onclick="return LinkClick('20',false,true)" target="content" title="配置操作" onmousemove="window.status='配置操作'"><img src="icons/11.gif" class="p"> <span id="l20" class="unselected">配置操作</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('21')"><img id="imgn21" src="icons/tplus.gif" class="p"></a><a href="#" onclick="return LinkClick('21',true,false)" onDblClick="return LinkDblClick('21')" target="content" title="工程图" onmousemove="window.status='工程图'"><img id="img21" src="icons/1.gif" class="p"> <span id="l21" class="unselected">工程图</span></a></nobr></div>
+<div id="d21" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/$$unsavedpage10.htm" onclick="return LinkClick('22',false,true)" target="content" title="更换图框" onmousemove="window.status='更换图框'"><img src="icons/11.gif" class="p"> <span id="l22" class="unselected">更换图框</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/$$unsavedpage11.htm" onclick="return LinkClick('23',false,true)" target="content" title="图纸打印" onmousemove="window.status='图纸打印'"><img src="icons/11.gif" class="p"> <span id="l23" class="unselected">图纸打印</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="topics/$$unsavedpage12.htm" onclick="return LinkClick('24',false,true)" target="content" title="一键工程图" onmousemove="window.status='一键工程图'"><img src="icons/11.gif" class="p"> <span id="l24" class="unselected">一键工程图</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('25')"><img id="imgn25" src="icons/tplus.gif" class="p"></a><a href="#" onclick="return LinkClick('25',true,false)" onDblClick="return LinkDblClick('25')" target="content" title="工作表辅助" onmousemove="window.status='工作表辅助'"><img id="img25" src="icons/1.gif" class="p"> <span id="l25" class="unselected">工作表辅助</span></a></nobr></div>
+<div id="d25" style="display:none"><div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/填充表头.htm" onclick="return LinkClick('26',false,true)" target="content" title="填充表头" onmousemove="window.status='填充表头'"><img src="icons/11.gif" class="p"> <span id="l26" class="unselected">填充表头</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/tshaped.gif" class="p"><a href="topics/清空.htm" onclick="return LinkClick('27',false,true)" target="content" title="清空" onmousemove="window.status='清空'"><img src="icons/11.gif" class="p"> <span id="l27" class="unselected">清空</span></a></nobr></div>
+<div><nobr><img src="icons/line.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="topics/$$unsavedpage13.htm" onclick="return LinkClick('28',false,true)" target="content" title="新建项目" onmousemove="window.status='新建项目'"><img src="icons/11.gif" class="p"> <span id="l28" class="unselected">新建项目</span></a></nobr></div>
+</div><div><nobr><a href="#" onClick="return NodeClick('29')"><img id="imgn29" src="icons/uaplus.gif" class="p"></a><a href="#" onclick="return LinkClick('29',true,false)" onDblClick="return LinkDblClick('29')" target="content" title="帮助" onmousemove="window.status='帮助'"><img id="img29" src="icons/1.gif" class="p"> <span id="l29" class="unselected">帮助</span></a></nobr></div>
+<div id="d29" style="display:none"><div><nobr><img src="icons/blank.gif" class="p"><img src="icons/upangle.gif" class="p"><a href="topics/$$unsavedpage14.htm" onclick="return LinkClick('30',false,true)" target="content" title="帮助" onmousemove="window.status='帮助'"><img src="icons/11.gif" class="p"> <span id="l30" class="unselected">帮助</span></a></nobr></div>
+</div><script>divlist = [2,7,11,15,19,21,25,29]</script>
+</body>
+</html>
