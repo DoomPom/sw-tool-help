@@ -188,7 +188,7 @@ visibility:hidden;
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(17);
+  parent.nav.tree.selectNode(14);
  }else{
   setTimeout("syn()",500);
 }
@@ -217,11 +217,29 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 </div>
 <div id="winchm_template_container">
 	<div id="winchm_template_content">
-<H2>读</H2>
-<H2>写</H2>
-<H2>删</H2>
-<H2>同</H2>
-<P>&nbsp;</P></div>	
+<H1><FONT size=3>值/强制： 状态有勾选 和 不勾选， 默认不勾选。 
+下面的四个操作够跟这个选项有关系。 </FONT></H1>
+<H1>读</H1>
+<P>功能: 按行读取属性。<BR><FONT size=3>值/强制不</FONT><FONT size=3>勾选: 
+表示</FONT> 
+读写的是属性的 值表达式。<BR><FONT size=3>值/强制</FONT><FONT size=3>勾选: 
+表示</FONT> 
+读写的是属性的 评估值。  </P>
+<H1>写  </H1>
+<P>功能: 按行写入属性。 <BR><FONT size=3>值/强制不</FONT><FONT size=3>勾选: 
+表示仅写入模型文档属性表内存在的字段</FONT> 
+ 。<BR><FONT size=3>值/强制</FONT><FONT size=3>勾选:&nbsp; 
+表示强制写入，当写入模型文档属性表内不存在的字段时，会添加写入</FONT> ，数据类型默认会给 文本 类型。  </P>
+<H1>删&nbsp;  </H1>
+<P>功能: 删除属性。 <BR><FONT size=3>值/强制不</FONT><FONT size=3>勾选: 
+删除组件属性字段</FONT> 
+ 。<BR><FONT size=3>值/强制</FONT><FONT size=3>勾选: 
+表示保留属性字段，仅仅清空</FONT> 值。  </P>
+<H1>同&nbsp;  </H1>
+<P>功能: 完全按照表格内的字段，让文档属性与之相同，没有的会补充，多余的会删除。 <BR><FONT size=3>值/强制不</FONT><FONT size=3>勾选: 
+表示</FONT> 写入已存字段，保留现有字段和类型，不改变。<BR><FONT size=3>值/强制</FONT><FONT size=3>勾选: 
+表示强制删除后，再添加，默认都是 文本 
+类型</FONT> 。<BR><BR>   </P></div>	
 	<div id="winchm_template_footer">Copyright &copy; 2023. All rights 
 reserved. (To change the copyright info, just edit it in template.)</div>
 </div>

@@ -188,7 +188,7 @@ visibility:hidden;
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(20);
+  parent.nav.tree.selectNode(16);
  }else{
   setTimeout("syn()",500);
 }
@@ -210,15 +210,37 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 
 
 <div id="winchm_template_top">
-	<div id="winchm_template_button"><A href="公式.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage10.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
+	<div id="winchm_template_button"><A href="公式.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage7.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
 	<div id="winchm_template_navigation">Help &gt; 
-配置 &gt; </div>
+属性 &gt; </div>
 	<div id="winchm_template_title">配置操作</div>
 </div>
 <div id="winchm_template_container">
 	<div id="winchm_template_content">
-<P> 
- <EM>             </EM>&nbsp;</P></div>	
+<H1>读配置</H1>
+<P>读取配置，表头 补充 三个字段 "[配置]", "[激活]", "[改配置]"。 当前配置会写在 "[激活]" 列； 所有配置，逗号分开，会写在 "[配置]" 列。</P>
+<H1>改配置</H1>
+<P>修改配置，完成后会更新&nbsp;&nbsp; "[配置]", "[激活]"， 
+这2个字段。</P>
+<P> "[改配置]"&nbsp; 列 和 界面上 
+配置后面的输入框，为修改配置的输入选项。&nbsp;优先级上&nbsp;[改配置] &gt; 输入框。 优先解析&nbsp; [改配置]&nbsp; 
+列，每一行都有有自动特定的 修改选。&nbsp; [改配置]&nbsp; 为为空值或者 
+无效值的时候才会 使用 
+输入框内的修改选项。</P>&lt; H3 
+&gt; 改配置规则说明: 
+<H3></H3>
+<P>1. 存在2种符号: -&gt; 派生 ; = 
+&gt; 改名<BR>2. -&gt;或者 = &gt;  前后写入要操作的配置，可以有空格。&lt; BR    &gt;      
+ 3.    可以写多个，逗号分割。执行的时候是从前到后依次执行  
+</P>
+<H3>改配置规则: </H3>
+<P>A-&gt;B,-&gt;B,A-&gt;,-&gt;&nbsp; 分表表示: &lt;br/&gt;<BR>&nbsp; 0. A-&gt;B&nbsp; 
+派生配置 由A派生创建B，执行成功条件: A存在，B不存在&nbsp; &lt;br/&gt;<BR>&nbsp; 1. -&gt;B&nbsp;&nbsp; 创建B ，执行成功条件: B不存在&nbsp; 
+&lt;br/&gt;<BR>&nbsp; 2. A-&gt;&nbsp; 删除A。行的条件为: 有多个配置。只有A的话，则保留。 
+&lt;br/&gt;<BR>&nbsp; 3. -&gt;&nbsp;&nbsp; 
+删掉派生,只保留顶层&lt;br/&gt;<BR>A=&gt;B,=&gt;B,A=&gt;,=&gt; &lt;br/&gt;<BR>&nbsp; 4. 
+A=&gt;B 改名 A存在B不存在。 &lt;br/&gt;<BR>&nbsp; 5. = &gt;B 当前改名为B&nbsp; 执行成功条件: 
+B不存在&lt;br/&gt;<BR>&nbsp; 6. A=&gt; A改为当前配置，原激活配置不动 &lt;br/&gt;<BR>&nbsp; 7. =&gt; 只保留当前配置其他的删除。若当前不是最顶层的配置，则会找他的顶层配置，然后把其余的删除 &lt;br/&gt;</P></div>	
 	<div id="winchm_template_footer">Copyright &copy; 2023. All rights 
 reserved. (To change the copyright info, just edit it in template.)</div>
 </div>
