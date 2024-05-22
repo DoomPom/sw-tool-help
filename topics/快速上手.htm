@@ -17,166 +17,152 @@ html,body {
 
 
 
-
+<meta http-equiv="X-UA-Compatible" content="IE=8">
 <style>
-html,div { margin: 0; padding: 0;}
+html {
+	overflow-y:scroll;
+}
 
 body {
 	padding: 0px;
 	margin: 0px;
-	overflow: auto;
-	height: 100%;
+	overflow: auto; 
+	background-color: #FFFFFF; 
+}
+
+#winchm_template_top{
+	margin: 0px;
+	padding-top: 10px;
+	padding-left: 5px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+
+	font-family: arial, helvetica, sans-serif;
+	font-size: 35px;
+	font-style: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: #00CC00;
+
+	width: auto;
+	background-color: #A6CAF0;
+	text-align: left;
+	background-image: url('template/hgrad.gif');
+	background-repeat: repeat;
+	
+}
+
+#winchm_template_navigation{
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+
+	padding-top: 7px;
+	padding-left: 5px;
+	padding-bottom: 6px;
+	padding-right: 5px;
+
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: normal;
+	color: #808080; 
+
+	border-top-style: solid;
+	border-top-width: 3px;
+	border-top-color: #C1C1C1;
+
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+	border-bottom-color: #DBDBDB;
+	
+	background-color: #FFFFFF;
+	width: auto;
 }
 
 #winchm_template_button{
 	float: right;
-	width: 93px;
-	top: 7px;
+	top: -3px;
 	position: relative;
 	text-align: right;
-	right: 5px;
+	right: -5px;
 	height: auto;
 }
 
-#winchm_template_top{
-	padding: 0px;
-	margin: 0px;
-	border-bottom: 1px solid #9B9B9B;
-	background-color: #B1CEFE;
-}
-
-#winchm_template_navigation{
-	margin: 0px;
-	padding-top: 7px;
-	padding-left: 7px;
-	padding-bottom: 3px;
-	padding-right: 0px;
-	font-size: 8.5pt;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	color: #585858;
-}
-
 #winchm_template_title{
-	margin: 0px;
-	padding-top: 4px;
-	padding-left: 7px;
-	padding-bottom: 7px;
-	padding-right: 0px;
-	font-size: 18px; 
-	font-family: Verdana, Geneva, sans-serif;
-	color: #363636;
-}
+	font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	color: 353535;	
 
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+	border-bottom-color: #C7C7C7;
+
+	width: auto;
+	background-color: #FFFFFF;
+	text-align: left;
+}
 #winchm_template_content{
-	margin-top: 20px;
+	padding: 0px;
+	margin-top: 15px;
 	margin-left: 15px;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	margin-right: 15px;
+
 	width: auto  !important;
 	width: 100%;
 }
 
 #winchm_template_footer{
 	border-width: 1px;
-	border-color: #B1CEFE;
+	border-color: #c0c0c0;
 	border-top-style: solid;
-	margin-top: 15px;
+	
+	margin-top: 0px;
 	margin-left: 15px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	margin-right: 15px;
-	padding-top: 7px;
+
+	padding-top: 6px;
 	padding-left: 0px;
-	padding-bottom: 0px;
+	padding-bottom: 20px;
 	padding-right: 0px;
+
 	font-family: arial, helvetica, sans-serif;
-	font-size: 8.5pt;
-	color: #696969;
-	width: auto;
-	text-align: left;
+	font-size: 9px;
+	color: #909090;
+
+	text-align: left;	
+	width: auto;	
 }
 
+#winchm_template_navigation a:link	{text-decoration: none;color: #0000ff}
+#winchm_template_navigation a:visited  {text-decoration: none; color: #0000ff}
+#winchm_template_navigation a:active {text-decoration: none; color: #0000ff}
+#winchm_template_navigation a:hover {text-decoration: none;color: #0000ff}
 
-#winchm_template_container{
-	margin: 0px;
-	padding: 0px;
-	position: static;
-	padding-bottom: 3px;
-	overflow: auto;
-	background-color: #FFFFFF;
-}
+a:link	{text-decoration: underline; color:#0033cc}
+a:visited  {text-decoration: underline; color: #0033cc}
+a:active {text-decoration: underline; color: #0033cc }
+a:hover {text-decoration: underline;color: #ff0000;}
 
-
-#winchm_template_navigation A:link	{text-decoration: none; color:#004080}
-#winchm_template_navigation A:visited  {text-decoration: none; color: #004080}
-#winchm_template_navigation A:active {text-decoration: none; color: #004080 }
-#winchm_template_navigation A:hover {text-decoration: none;color: #0080FF}
-
-A:link	{text-decoration: underline; color:#0033CC}
-A:visited  {text-decoration: underline; color: #0033CC}
-A:active {text-decoration: underline; color: #0033CC }
-A:hover {text-decoration: underline;color: #FF0000;}
-</style>
-<script type="text/javascript">
-function isMobile(){
-Agent = window.navigator.userAgent;
-if (Agent.indexOf("iPhone")>=1 || Agent.indexOf("iPad")>=1 || Agent.indexOf("iPod")>=1 || Agent.indexOf("Android")>=1){
-return true;
-}else{
-return false;	
-}
-
-}
-function d_onresize(){
-if (window.navigator.userAgent.indexOf("MSIE")>=1){
-document.getElementById('winchm_template_container').style.pixelWidth = document.body.offsetWidth - 3;
-document.getElementById('winchm_template_container').style.pixelHeight = document.body.offsetHeight - document.getElementById('winchm_template_top').offsetHeight - 4;
-}
-document.getElementById('winchm_template_container').style.top = document.getElementById('winchm_template_top').offsetHeight + 'px';
-}
-
-function d_onbeforeprint(){
-if (window.navigator.userAgent.indexOf("MSIE")>=1){
-document.getElementById('winchm_template_container').style.height = 'auto';
-}
-}
-
-function d_onafterprint(){
-d_onresize();
-}
-
-if(!isMobile()){
-
-window.onload = d_onresize;
-window.onresize = d_onresize;
-window.onbeforeprint = d_onbeforeprint;
-window.onafterprint = d_onafterprint;
-
-document.write("<style>\n");
-document.write("body {overflow: hidden;}\n");
-document.write("#winchm_template_container {position: absolute;overflow: auto;top : 0px;right: 0px;bottom: 0px;left: 0px;}\n");
-document.write("</style>\n");
-}
-
-</script>
-<style>
 @media print
 {
-body {
-	padding: 0px;
-	margin: 0px;
-	overflow: auto;
-	height: auto;
-}
-#winchm_template_container{
-	position: static;	
-	margin: 0px;
-	padding: 5px;
-	
-	width: auto;
-	height: auto;
-	overflow: hidden;
-}
 #winchm_template_button{
 visibility:hidden;
 }
@@ -209,19 +195,81 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 </script> 
 
 
-<div id="winchm_template_top">
-	<div id="winchm_template_button"><A href="template/简介.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template2/btn_prev_n.gif" border="0"></a><A href="$$unsavedpage1.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template2/btn_next_n.gif" border="0"></a></div>
-	<div id="winchm_template_navigation">Help &gt; 
+<div id="winchm_template_top"><div id="winchm_template_button"><A href="template/简介.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template/btn_prev_n.gif" border="0"></a><A href="选取文件.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template/btn_next_n.gif" border="0"></a></div>
+<nobr><IMG align=absMiddle src="template/logo.gif">&nbsp;SwTool 帮助</nobr></div>
+<div id="winchm_template_navigation">Help &gt; 
 </div>
-	<div id="winchm_template_title">快速上手</div>
-</div>
-<div id="winchm_template_container">
-	<div id="winchm_template_content">
-<P> 
- <EM>             </EM>&nbsp;</P></div>	
-	<div id="winchm_template_footer">Copyright &copy; 2023. All rights 
-reserved. (To change the copyright info, just edit it in template.)</div>
-</div>
+<div id="winchm_template_title">快速上手</div>
+<div id="winchm_template_content">
+<H2>&nbsp;1. 选取文件</H2>
+<P>点击【选取文件】 按钮，弹出选中文件按钮，选取 3D文件，选择*.SLDPRT和*.SLDASM 文件。 选完 
+点击 【确定】。</P>
+<P>则会在表格内录入选取文件的信息。黄色的表头会自动填充。第一列有 ★ 表示有工程图，空白表示无工程图</P>
+<P><IMG alt="" src="image/B02.png"></P>
+<DL>
+  <DT>
+<PRE>以下的操作是相互独立的，但是都依赖 1选取文件，需要先录入文件</PRE>
+  <DT>
+<H2>2. 重命名</H2></DT></DL>
+<P>表格 【新名称】 E列，写入新的文件名( 不含后缀和路径)。点击重命名即可执行 文件重新改名。 
+修改3D文件会连带工程图文件一起修改，会更新依赖</P>
+<H2>    3. 
+读写属性</H2>
+<P><IMG alt="" src="image/properity.png">     
+</P>
+<P>F后面的列，在第一行 写上 需要读取的属性字段。然后 菜单上勾选 需要读取的类别，主要分【配置 】和【自定义】。 
+配置需要指定配置名，若不指定默认是当前激活配置。</P>
+<P>读就点击【读】， 
+会把solidworks文档的属性读取到excel中，在表头字段下方填充。&nbsp;写就点击【写】，会把表格的属性值写入solidworks文档的属性中。</P>
+<H2>    4. 
+读配置</H2>
+<P>    点击 【读配置】， 结果。会填充字段[配置],[激活]，[改配置], 
+并在下方填写上文件的配合。</P>
+<P><IMG alt="" src="image/readconfg.png">     
+</P>
+<H2>5. 更换图框     
+</H2>
+<P>点击【更换图框】， 弹出模板选择对话框。， 点击选择工程图图框文件。 
+选选完后，&nbsp;点击【确定】则开始执行任务     
+</P>
+<P><IMG alt="" src="image/sheet.png">     
+</P>
+<H2>6. 一键工程图     
+</H2>
+<P>配置，点击如下图指示的小按钮，进入配置界面。     
+</P>
+<P><IMG alt="" src="image/drawconf.png">     
+</P>
+<P>配置界面：&nbsp; 标注样式，修改为 普通标注。勾选覆盖选项。     
+</P>
+<P><IMG alt="" src="image/drawconf2.png">     
+</P>
+<P>点击 【一键工程图】 就开启任务。后面不需要再配置，可点击【一键工程图】 按钮就可执行任务。     
+</P>
+<H2>     
+7. 格式转换     
+</H2>
+<P>     
+目标:     
+将工程图保存为pdf 和dwg。     
+</P>
+<P>     
+点击     
+如下图指示位置的按钮，     
+弹出 格式转换配置界面。     
+</P>
+<P>&nbsp;<IMG alt="" src="image/save01.png">     
+      
+</P>
+<P>     
+ 格式转换配置界面: 勾选需要的格式，关闭。点击菜单     
+ 【格式转换】--&gt;【工程图另存为】     
+ ，开始执行工程图格式转换任务。     
+</P>
+<P><IMG alt="" src="image/save02.png">     
+      
+</P></div>
+<div id="winchm_template_footer">Copyright © 2023. All rights reserved.(To change the copyright info or the title, just edit them in template.)</div>
 
 </body>
 </html>

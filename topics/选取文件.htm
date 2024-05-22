@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>重命名</title>
+<title>选取文件</title>
 <meta name="GENERATOR" content="WinCHM">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
@@ -174,7 +174,7 @@ visibility:hidden;
 function syn(){
 if(parent.nav.tree){
  if(parent.nav.tree.loaded){
-  parent.nav.tree.selectNode(5);
+  parent.nav.tree.selectNode(3);
  }else{
   setTimeout("syn()",500);
 }
@@ -184,7 +184,7 @@ if(parent.nav.tree){
 if(parent!=self){
   setTimeout("syn()",100);
 }else{
-  parent.location.href = "../index.htm?page=重命名.htm";
+  parent.location.href = "../index.htm?page=选取文件.htm";
 }
 originalOnload = window.onload;
 if(originalOnload==null){
@@ -195,41 +195,31 @@ window.onload = function(){originalOnload();parent.contentLoaded = true;};
 </script> 
 
 
-<div id="winchm_template_top"><div id="winchm_template_button"><A href="选取文件.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template/btn_prev_n.gif" border="0"></a><A href="模型操作.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template/btn_next_n.gif" border="0"></a></div>
+<div id="winchm_template_top"><div id="winchm_template_button"><A href="快速上手.htm" title="Previous topic"><img id="winchm_template_prev" alt="Previous topic" src="template/btn_prev_n.gif" border="0"></a><A href="重命名.htm" title="Next topic"><img id="winchm_template_next" alt="Next topic" src="template/btn_next_n.gif" border="0"></a></div>
 <nobr><IMG align=absMiddle src="template/logo.gif">&nbsp;SwTool 帮助</nobr></div>
 <div id="winchm_template_navigation">Help &gt; 
-模型 &gt; </div>
-<div id="winchm_template_title">重命名</div>
+选取文档 &gt; </div>
+<div id="winchm_template_title">选取文件</div>
 <div id="winchm_template_content">
-<H2><IMG alt="" src="image/rename.png"></H2>
-<H2>保存路径</H2>
-<P>保存路径选择，点击可以打开路径选择对话框，选取文档的保存的路径，选完后，路径会写入 【新路径】列。 
-此时仅仅是重命名前的辅助操作，写入表内的路径还可以人为修改。</P>
-<P><STRONG>嵌套模式/平展模式：</STRONG>&nbsp; 默认是平展模式，即所有文档在一个文件夹内。 
-可以勾选嵌套模式，在嵌套模式下，点选保存路径后，路径会根据之前嵌套的样式替换，仍保留文件嵌套样式。</P>
-<H2>重命名</H2>
-<P>3D模型 和 
-关联的工程图，模型的所有关联，都会更新关系，不造成改名后零件丢失。</P>
-<P><STRONG><FONT size=3><FONT color=#ff0000><FONT face="">提示:</FONT>不能只添加改名的组件，相关联的组件即使 不改名 也要添加到表格内。</FONT>  </FONT>    </STRONG>  
-</P>
-<H3>  
-禁止选项:</H3>
-<P>  
-1. 
-sw打开有文档，多界面操作，会造成文件保存失败，所以程序在运行前就会检测，禁止打开，多窗口打开sw,无法检测到，仍然会有存在保存失败的问题。</P>
-<P>  
-2. 
-新命名的名字之间重名，新命名与表内现文件名有重名，文件二义性，会造成关联失效。重名情况也会在改名前提示，会终止程序。</P>
-<H3>  
-  
-可选选项</H3>
-<P>  
-  
-1. 现存部件依赖缺失，报提示，会让你选择 ，继续，或者 取消。继续会继续执行，取消则会终止运行</P>
-<P>  
-  
-2. 改名部件被其他未出现在表内的部件引用，也会报提示，继续，或者 
-取消。继续会继续执行，取消则会终止运行</P></div>
+<H2>界面</H2>
+<P><IMG alt="" src="image/SelectFile.png"></P>
+<H1>结果</H1>
+<P><IMG alt="" src="image/B02.png"></P>
+<H2>选取文件</H2>
+<P>会弹出文件选取对话框。点击，确定获取</P>
+<H2>文件夹选取</H2>
+<P>会弹出文件夹，选择文件夹后会把文件夹下的内容全部录入。</P>
+<P>平展模式，只录入所选目录下的文件。 嵌套模式，连带子目录文件也会录入。</P>
+<P>选择类型上，主要分装配体，工程图，零件， 3D（包含零件和装配体).</P>
+<H2>带依赖添加</H2>
+<P>只能选取零件或者装配体。点击后会弹出 
+文件选取对话框，选取一个文件，然后会查询依赖，查找存在的依赖文件，然后录入表内</P>
+<H2>嵌套模式</H2>
+<P>这是一个开关按钮， 有2中状态，嵌套模式/平展模式。</P>
+<P>选取文件，嵌套会连带子目录，平展模式则只会在选择的目录下查找。</P>
+<H2>工作目录</H2>
+<P>打开当前的工作目录。</P>
+<P>&nbsp;</P></div>
 <div id="winchm_template_footer">Copyright © 2023. All rights reserved.(To change the copyright info or the title, just edit them in template.)</div>
 
 </body>
