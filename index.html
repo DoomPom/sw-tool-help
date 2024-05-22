@@ -3,18 +3,42 @@
 <html>
 <head>
 <title>Sw工具</title>
+<meta name="GENERATOR" content="WinCHM Pro">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+var LocString=String(window.document.location.href);
+var DefaultPage;
+function GetQueryString(str){
+    var rs=new RegExp("(^|)"+str+"=([^\&]*)(\&|$)","gi").exec(LocString),tmp;
+    if(tmp=rs)return tmp[2];
+    return null;
+    }
+DefaultPage = GetQueryString("page");
+if(DefaultPage==null || DefaultPage==''){
+	DefaultPage = 'template/简介.htm';
+}
+</script>
 </head>
+<script>
+document.write('<frameset rows="40,*" cols="*" framespacing="0" frameborder="0" border="0">');
+document.write('<frame src="webhelptop.htm" name="top" scrolling="NO" noresize id="top" >');
+document.write('<frame src="webhelpframe.htm#page=' +  DefaultPage + '" name="main" id="main">');
+document.write('</frameset>');
+</script>
 
-<frameset rows="40,*" cols="*" framespacing="0" frameborder="0" border="0">
-	<frame src="webhelptoph.htm" name="top" scrolling="NO" noresize id="top">
-	<frameset rows="*" cols="270,*" framespacing="5" frameborder="1" border="5" bordercolor="#003366">
-		<frame src="webhelplefth.htm" name="nav" frameborder="1" bordercolor="#003366" id="nav">
-		<frame src="scr/template/简介.htm" name="content" frameborder="1" bordercolor="#003366" id="content">
-	</frameset>
-</frameset>
+<noscript>
+<body>
+<p style="font-weight: bold">Your web browser needs JavaScript support to show the full function document.</p>
+<p><a href="indexh.htm">See simple version</a></p>
+</body>
+</noscript>
 
-<noframes><body>
+<body>
+<p>
+<a href="webhelpleft.htm">Sw工具</a>
+<br>
+<a href="http://www.softany.com/winchm/">This document is created with Softany WinCHM pro 4.</a>
+</p>
+</body>
 
-</body></noframes>
 </html>
